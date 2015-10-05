@@ -1,0 +1,50 @@
+<html ng-app="u2fDemo">
+<header>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="chrome-extension://pfboblefjcgdjicmnffhdgionmgcdmne/u2f-api.js"></script>
+</header>
+<body  ng-controller="mainController">
+
+<div class="well">
+    <div class="container">
+        <form name="formSignin" class="form-signin" role="form" novalidate>
+            {{ text }}
+            <h2 class="form-signin-heading">Try to authenticate</h2>
+
+            <label for="username" class="sr-only" translate>Username</label>
+            <input name="username" id="username" class="form-control"
+                   ng-model="login.username" required
+                   placeholder="Username"
+                   autofocus/>
+
+            <label for="password" class="sr-only" translate>Password</label>
+            <input name="password" type="password"
+                   id="password" class="form-control"
+                   ng-model="login.password" required
+                   placeholder="Password"/>
+
+            <div class="text-center">
+                <button ng-click="authenticate()"
+                        ng-disabled="formSignin.$invalid"
+                        class="btn btn-primary btn-block">Log In
+                </button>
+            </div>
+
+        </form>
+        <div class="alert alert-info">
+            {{ result_text }}
+        </div>
+        <div class="help-block">
+            {{ data }}
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
